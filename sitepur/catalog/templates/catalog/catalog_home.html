@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Кроссовки{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Кроссовки</h1>
+        {% if catalog %}
+            {% for el in catalog %}
+                <div class="d-inline-flex">
+                    <div class="sneakers">
+                        <a href=""><img src="/{{ el.img }}" width="250px" height="220px" id="imgthing"></a>
+                        <h3 id="hthing">{{ el.title }}</h3>
+                        <p>{{ el.price }} р.</p>
+                        <button type="button" class="btn btn-outline-dark btn-sm">Купить</button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>На данный момент товары отсутствуют</p>
+        {% endif %}
+    </div>
+{% endblock %}

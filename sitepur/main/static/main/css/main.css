@@ -1,0 +1,134 @@
+.text  {
+    background: #333;
+    border-bottom: 3px solid #9ACD32;
+    width:  100%; /* Ширина таблицы */
+    height: 10vh;
+    border-spacing: 0; /* Расстояние между ячейками */
+   }
+   .text a {
+    display: block;
+    transition: .3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+   }
+   .text td {
+    color: #f2f2f2;
+    vertical-align: middle;
+   }
+   #col1 {
+    width: 25%;
+    line-height: 75px;
+   }
+   #col2 {
+   text-align:center;
+   width: 50%;
+   }
+   #col3 {
+    width: 25%;
+   }
+header {
+    color: #f2f2f2;
+}
+.logo {
+    font-size: 21px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.logoimg {
+    float: left;
+    width: 115px;
+    height: 78px;
+    opacity: 1;
+    transition: opacity .5s;
+}
+.logoimg:hover {
+    opacity: .6;
+}
+
+<!-- border-right: 1mm ridge green; -->
+nav {
+  margin: 0 auto;
+}
+nav ul {
+  list-style: none;
+  display: inline-block;
+  vertical-align:middle;
+  margin: 0;
+  padding: 0;
+}
+.topmenu {text-align: center;}
+.topmenu:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.topmenu > li {
+  float: left;
+  position: relative;
+}
+.topmenu > li > a {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f2f2f2;
+  padding: 15px 30px;
+}
+.topmenu li a:hover { color: #008080; }
+.submenu-link:after {
+  margin-left: 10px;
+}
+.submenu {
+  background: #273037;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 5;
+  width: 180px;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: 0 0;
+  transition: .5s ease-in-out;
+}
+.submenu a {
+  color: #f2f2f2;
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.submenu li:last-child a { border-bottom: none; }
+.topmenu > li:hover .submenu {
+  opacity: 1;
+  transform: scaleY(1);
+}
+main {
+    background: #DCDCDC;
+}
+main .sneakers {
+    background: #f2f2f2;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    border: 2px solid grey;
+}
+
+main .features p {
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 3px;
+}
+.btn-outline-dark {
+    float:right;
+    margin-right: 4px;
+}
+#imgthing {
+    border-bottom: 2px solid grey;
+}
+#hthing {
+    font-size: 16px;
+    margin-left: 3px;
+}
+
+
+
+
+

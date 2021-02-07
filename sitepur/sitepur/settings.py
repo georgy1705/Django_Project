@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
+    'filer',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +128,5 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/var/www/static/',
 ]
+
+THUMBNAIL_HIGH_RESOLUTION = True

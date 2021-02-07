@@ -1,4 +1,19 @@
 from django.contrib import admin
-from .models import Articles
+from .models import Articles, ArticlesImage
 
-admin.site.register(Articles)
+
+class ArticlesImageAdmin(admin.StackedInline):
+    model = ArticlesImage
+
+
+@admin.register(Articles)
+class ArticlesAdmin(admin.ModelAdmin):
+    inlines = [ArticlesImageAdmin]
+    prepopulated_fields = {"slug": ("title",)}
+
+
+
+
+
+
+

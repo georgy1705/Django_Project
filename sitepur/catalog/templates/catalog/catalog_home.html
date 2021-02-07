@@ -9,10 +9,10 @@
             {% for el in catalog %}
                 <div class="d-inline-flex">
                     <div class="sneakers">
-                        <a href=""><img src="/{{ el.img }}" width="250px" height="220px" id="imgthing"></a>
+                        <a href="{% url 'shoes-detail' el.id %}"><img src="/{{ el.img }}" width="250px" height="220px" id="imgthing"></a>
                         <h3 id="hthing">{{ el.title }}</h3>
                         <p>{{ el.price }} р.</p>
-                        <button type="button" class="btn btn-outline-dark btn-sm">Купить</button>
+                        <a href="{% url 'shoes-detail' el.id %}" class="btn btn-outline-dark btn-sm">Купить</a>
                     </div>
                 </div>
             {% endfor %}

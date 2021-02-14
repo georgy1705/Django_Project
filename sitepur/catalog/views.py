@@ -15,6 +15,6 @@ class ShoesDetailView(DetailView):
         # Call the base implementation first to get a context
         context = super(ShoesDetailView, self).get_context_data(**kwargs)
         # Add extra context from another model
-        context['articleimg'] = ArticlesImage.objects.all()
+        context['articleimg'] = ArticlesImage.objects.filter(post=self.object)
         return context
 

@@ -101,7 +101,7 @@ nav ul {
   opacity: 1;
   transform: scaleY(1);
 }
-main {
+body {
     background: #DCDCDC;
 }
 main .sneakers {
@@ -127,8 +127,26 @@ main .features p {
     font-size: 16px;
     margin-left: 3px;
 }
-
-
-
+.single-item {
+    margin-left: 50px;
+    width: 40%;
+    float: left;
+}
+.detailtable {
+    float: right;
+    margin-top: 20px;
+}
+#detailtablecol1 {
+    font-size: 29px;
+    font-weight: bold;
+    vertical-align: center;
+    padding: 5px;
+}
+#detailtablecol2 {
+    font-size: 25px;
+    font-weight: bold;
+    vertical-align: center;
+    padding: 5px;
+}
 
 

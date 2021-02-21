@@ -4,15 +4,19 @@
 
 {% block content %}
     <div class="features">
-        <div class="single-item">
-            {% for el in articleimg %}
-                <div class="slick_item"><img src="{{ el.img_detail.url }}" width="100%" height="400px"></div>
-            {% endfor %}
-        </div>
-        <table width="50%" cellspacing="0" cellpadding="0" class="detailtable">
-            <tr>
-                <td width="50%" id="detailtablecol1">{{ article.title }}</td><td id="detailtablecol2">{{ article.price }} &#8381</td>
-            </tr>
-        </table>
+        {% if articleimg %}
+            <div class="single-item">
+                {% for el in articleimg %}
+                    <div class="slick_item"><img src="{{ el.img_detail.url }}" width="100%" height="400px"></div>
+                {% endfor %}
+            </div>
+            <table width="50%" cellspacing="0" cellpadding="0" class="detailtable">
+                <tr>
+                    <td width="50%" id="detailtablecol1">{{ article.title }}</td><td id="detailtablecol2">{{ article.price }} &#8381</td>
+                </tr>
+            </table>
+        {% else %}
+            <p>На данный момент описание товара отсутствует</p>
+        {% endif %}
     </div>
 {% endblock %}

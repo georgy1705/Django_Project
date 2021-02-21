@@ -1,15 +1,20 @@
 from django.db import models
 from filer.fields.image import FilerImageField
+from slugify import slugify
 
 class Articles(models.Model):
     img = models.ImageField('Фотография', upload_to='sneakers_logos')
-    slug = models.SlugField()
     title = models.CharField('Название', max_length=50)
+    slug = models.SlugField(unique=True)
     price = models.CharField('Цена', max_length=20)
     description = models.TextField('Описание вещи')
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        return super(Articles, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Все кроссовки'

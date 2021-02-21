@@ -18,3 +18,5 @@ class ShoesDetailView(DetailView):
         context['articleimg'] = ArticlesImage.objects.filter(post=self.object)
         return context
 
+
+

@@ -8,7 +8,7 @@
             {% for el in catalog %}
                 <div class="d-inline-flex">
                     <div class="card text-white bg-dark mb-3" style="width:18rem;">
-                      <a href="{% url 'shoes-detail' el.id %}">
+                      <a href="{% url 'shoes-detail' el.slug %}">
                           <img class="card-img-top" src="{{ el.img.url }}" alt="Card image cap">
                       </a>
                       <div class="card-body">
@@ -16,7 +16,7 @@
                           <span class="align-top">{{ el.price }} &#8381</span>
                           <div style="clear: both"></div>
                           <span class="bthing">
-                            <a href="{% url 'shoes-detail' el.id %}" class="btn btn-info btn-sm">Купить</a>
+                            <a href="{% url 'shoes-detail' el.slug %}" class="btn btn-info btn-sm">Купить</a>
                           </span>
                       </div>
                     </div>

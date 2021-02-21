@@ -3,7 +3,13 @@
 {% block title %}Все кроссовки{% endblock %}
 
 {% block content %}
-        <h1>Кроссовки</h1>
+        <nav aria-label="breadcrumb" class="breadcrumps">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'catalog_home' %}">Каталог</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Обувь</li>
+          </ol>
+        </nav>
         {% if catalog %}
             {% for el in catalog %}
                 <div class="d-inline-flex">

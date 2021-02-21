@@ -4,6 +4,14 @@
 
 {% block content %}
     <div class="features">
+        <nav aria-label="breadcrumb" class="breadcrumps">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'catalog_home' %}">Каталог</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'catalog_home' %}">Обувь</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+          </ol>
+        </nav>
         {% if articleimg %}
             <div class="single-item">
                 {% for el in articleimg %}
@@ -13,6 +21,40 @@
             <table width="50%" cellspacing="0" cellpadding="0" class="detailtable">
                 <tr>
                     <td width="50%" id="detailtablecol1">{{ article.title }}</td><td id="detailtablecol2">{{ article.price }} &#8381</td>
+                </tr>
+                <tr>
+                    <td width="50%"><p class="detailtable8">Выберите размер</p><br></td>
+                    <td><a href="#" class="detailtable8"></a>Таблица размеров</td>
+                </tr>
+                <tr>
+                    <td class="detailtablecol3" width="50%">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off" aria-pressed="true">US 8.5</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 9</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 9.5</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 10</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="detailtablecol4" width="50%">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 10.5</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 11</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 11.5</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 12</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="detailtablecol5" width="50%">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 12.5</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 13</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 14</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="button" autocomplete="off">US 15</button>
+                        </div>
+                    </td>
                 </tr>
             </table>
         {% else %}

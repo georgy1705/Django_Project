@@ -116,17 +116,6 @@ main .features p {
     font-weight: bold;
     margin-left: 3px;
 }
-.btn-outline-dark {
-    float:right;
-    margin-right: 4px;
-}
-#imgthing {
-    border-bottom: 2px solid grey;
-}
-#hthing {
-    font-size: 16px;
-    margin-left: 3px;
-}
 .single-item {
     margin-left: 50px;
     width: 40%;
@@ -140,13 +129,31 @@ main .features p {
     font-size: 29px;
     font-weight: bold;
     vertical-align: center;
-    padding: 5px;
 }
 #detailtablecol2 {
     font-size: 25px;
-    font-weight: bold;
-    vertical-align: center;
-    padding: 5px;
+    font-weight: 500;
+    vertical-align: bottom;
 }
+.card {
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+#hthing {
+    font-size: 16px;
+    margin-left: 3px;
+    float:left;
+    font-weight: 650;
+    width: 60%;
+}
+.align-top {
+    float:right;
+    font-weight: 500;
+    margin-bottom: 11px;
+}
+.bthing {
+    float:right;
+}
+
 
 

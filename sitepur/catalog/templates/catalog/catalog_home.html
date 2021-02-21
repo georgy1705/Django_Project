@@ -3,21 +3,26 @@
 {% block title %}Все кроссовки{% endblock %}
 
 {% block content %}
-    <div class="features">
         <h1>Кроссовки</h1>
         {% if catalog %}
             {% for el in catalog %}
                 <div class="d-inline-flex">
-                    <div class="sneakers">
-                        <a href="{% url 'shoes-detail' el.id %}"><img src="/{{ el.img }}" width="250px" height="220px" id="imgthing"></a>
-                        <h3 id="hthing">{{ el.title }}</h3>
-                        <p>{{ el.price }} р.</p>
-                        <a href="{% url 'shoes-detail' el.id %}" class="btn btn-outline-dark btn-sm">Купить</a>
+                    <div class="card text-white bg-dark mb-3" style="width:18rem;">
+                      <a href="{% url 'shoes-detail' el.id %}">
+                          <img class="card-img-top" src="{{ el.img.url }}" alt="Card image cap">
+                      </a>
+                      <div class="card-body">
+                          <h3 id="hthing">{{ el.title }}</h3>
+                          <span class="align-top">{{ el.price }} &#8381</span>
+                          <div style="clear: both"></div>
+                          <span class="bthing">
+                            <a href="{% url 'shoes-detail' el.id %}" class="btn btn-info btn-sm">Купить</a>
+                          </span>
+                      </div>
                     </div>
                 </div>
             {% endfor %}
         {% else %}
             <p>На данный момент товары отсутствуют</p>
         {% endif %}
-    </div>
 {% endblock %}

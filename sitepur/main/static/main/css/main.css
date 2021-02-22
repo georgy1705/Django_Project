@@ -8,8 +8,10 @@
    .text a {
     display: block;
     transition: .3s ease-in-out;
-    text-decoration: none;
     outline: none;
+   }
+   .text a:hover {
+    text-decoration:none;
    }
    .text td {
     color: #f2f2f2;
@@ -117,24 +119,9 @@ main .features p {
     margin-left: 3px;
 }
 .single-item {
-    margin-left: 50px;
-    width: 40%;
-    float: left;
     border: 4px solid white;
-}
-.detailtable {
-    float: right;
-}
-#detailtablecol1 {
-    font-size: 29px;
-    font-weight: bold;
-    vertical-align: center;
-}
-#detailtablecol2 {
-    font-size: 25px;
-    font-weight: 500;
-    vertical-align: bottom;
-    text-align: center;
+    width: 70%;
+    margin-left: 16%;
 }
 .card {
     margin-right: 10px;
@@ -157,7 +144,10 @@ main .features p {
 }
 .breadcrumb a {
     color: black;
+}
+.breadcrumb a:hover {
     text-decoration: none;
+    color: black;
 }
 .breadcrumb {
     background: #A9A9A9;
@@ -165,13 +155,30 @@ main .features p {
     margin-right: 15px;
     margin-top: 5px;
 }
-.btn-group {
-    margin-top: 46px;
-    margin-right: 10px;
+
+.detailtablecol2 {
+    font-size: 29px;
+    font-weight: bold;
+    vertical-align: top;
 }
-.detailtable8 {
-    margin-top: 30px;
+.detailtablecol3 {
+    font-size: 25px;
+    font-weight: 500;
+    vertical-align: bottom;
+    text-align: center;
 }
+main .features h6 {
+    font-weight: bold;
+    margin-top: 50px;
+}
+#acoldetail {
+    color: black;
+}
+
+
+
+
+
 
 
 

@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Войти{% endblock %}
+
+{% block content %}
+    <div class="container-fluid register">
+        <div class="row align-items-start justify-content-between">
+            <div class="col-sm-5">
+                <h3>Вход в аккаунт</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                </form>
+            </div>
+            <div class="col-sm-5">
+                <h3>Создать аккаунт</h3>
+              <p id="pregister">Если вы еще не зарегистрированы, создайте аккаунт и получите преимущества.</p>
+                <a class="btn btn-secondary" href="{% url 'register' %}" role="button">Создать аккаунт</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

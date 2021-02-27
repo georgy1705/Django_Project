@@ -75,6 +75,9 @@ nav ul {
   color: #f2f2f2;
   padding: 15px 30px;
 }
+#topmenu2 > li > a {
+    padding: 15px 15px;
+}
 .topmenu li a:hover { color: #008080; }
 .submenu-link:after {
   margin-left: 10px;
@@ -172,6 +175,12 @@ main .features h6 {
 }
 #acoldetail {
     color: black;
+}
+.register h3 {
+    text-transform: uppercase;
+}
+#pregister {
+    font-size: 25px;
 }
 
 

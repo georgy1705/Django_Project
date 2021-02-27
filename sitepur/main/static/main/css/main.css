@@ -103,7 +103,7 @@ nav ul {
   opacity: 1;
   transform: scaleY(1);
 }
-body {
+main {
     background: #DCDCDC;
 }
 main .sneakers {
@@ -119,7 +119,7 @@ main .features p {
     margin-left: 3px;
 }
 .single-item {
-    border: 4px solid white;
+    border: 4px solid grey;
     width: 70%;
     margin-left: 16%;
 }
@@ -153,7 +153,6 @@ main .features p {
     background: #A9A9A9;
     margin-left: 15px;
     margin-right: 15px;
-    margin-top: 5px;
 }
 
 .detailtablecol2 {

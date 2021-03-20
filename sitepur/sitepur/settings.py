@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'filer',
     'mptt',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,8 @@ STATICFILES_DIRS = [
 ]
 
 THUMBNAIL_HIGH_RESOLUTION = True
+
+AUTH_USER_MODEL = 'user.User'
+
+PHONENUMBER_DEFAULT_REGION = 'RU'
+PHONENUMBER_DB_FORMAT = 'E164'

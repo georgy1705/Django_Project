@@ -183,6 +183,22 @@ main .features h6 {
     font-size: 25px;
 }
 
+.filters {
+    border-right: solid gray 2px;
+    border-top: solid gray 2px;
+    padding-top: 20px;
+    background: white;
+}
+.form-check-label55:hover {
+    color: green;
+}
+
+
+
+
+
+
+
 
 
 

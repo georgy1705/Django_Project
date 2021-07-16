@@ -2,8 +2,16 @@ from django.db import models
 from filer.fields.image import FilerImageField
 from slugify import slugify
 
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
+
 class Articles(models.Model):
-    img = models.ImageField('Фотография', upload_to='sneakers_logos')
+    img = models.ImageField(upload_to='sneakers_logos')
+    img_thumbnail = ImageSpecField(source='img',
+                                      processors=[ResizeToFill(1000, 950)],
+                                      format='JPEG',
+                                      options={'quality': 60})
+
     title = models.CharField('Название', max_length=50)
     slug = models.SlugField(unique=True)
     price = models.CharField('Цена', max_length=20)

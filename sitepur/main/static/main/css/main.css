@@ -130,6 +130,7 @@ main .features p {
     margin-right: 10px;
     margin-bottom: 15px;
 }
+
 #hthing {
     font-size: 16px;
     margin-left: 3px;
@@ -144,6 +145,7 @@ main .features p {
 }
 .bthing {
     float: right;
+    margin-top: 10px;
 }
 .breadcrumb a {
     color: black;

@@ -38,9 +38,9 @@
         {% if catalog %}
             {% for el in catalog %}
                 <div class="d-inline-flex">
-                    <div class="card text-white bg-dark mb-3" style="width:16rem; height: 28rem;">
+                    <div class="card text-white bg-dark mb-3" style="width:16rem; height: 24rem;">
                       <a href="{% url 'shoes-detail' el.slug %}">
-                          <img class="card-img-top" src="{{ el.img.url }}" alt="Card image cap">
+                          <img class="card-img-top" src="{{ el.img_thumbnail.url }}" alt="Card image cap">
                       </a>
                       <div class="card-body">
                           <h3 id="hthing">{{ el.title }}</h3>

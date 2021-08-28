@@ -35,54 +35,46 @@
                         <div class="row justify-content-center">
                             <div class="col-sm">
                                 <div class="btn-group btn-group-toggle">
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option1" autocomplete="off"> US 9
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option2" autocomplete="off"> US 9.5
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option3" autocomplete="off"> US 10
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option4" autocomplete="off"> US 10.5
-                                    </label>
+                                    <input type="radio" class="btn-check" name="options" value="US 8" onclick="check" id="option1" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option1">US 8</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 8.5" id="option2" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option2">US 8.5</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 9" id="option3" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option3">US 9</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 9.5" id="option4" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option4">US 9.5</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-sm">
                                 <div class="btn-group btn-group-toggle">
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option5" autocomplete="off"> US 11
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option6" autocomplete="off"> US 11.5
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option7" autocomplete="off"> US 12
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option8" autocomplete="off"> US 12.5
-                                    </label>
+                                    <input type="radio" class="btn-check" name="options" value="US 10" onclick="check" id="option5" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option5">US 10</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 10.5" id="option6" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option6">US 10.5</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 11" id="option7" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option7">US 11</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 11.5" id="option8" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option8">US 11.5</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-sm">
                                 <div class="btn-group btn-group-toggle">
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option9" autocomplete="off"> US 13
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option10" autocomplete="off"> US 14
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="options" id="option11" autocomplete="off"> US 15
-                                    </label>
+                                    <input type="radio" class="btn-check" name="options" value="US 12" onclick="check" id="option9" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option9">US 12</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 12.5" id="option10" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option10">US 12.5</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 13" id="option11" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option11">US 13</label>
+                                    <input type="radio" class="btn-check" name="options" value="US 14" id="option12" autocomplete="off">
+                                    <label class="btn btn-secondary" for="option12">US 14</label>
                                 </div>
                             </div>
                         </div>
+                        <input class="form-control" id = "size" type="text" readonly>
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn btn-warning">Добавить в корзину</button>

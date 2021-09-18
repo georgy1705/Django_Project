@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Articles, ArticlesImage
+from .models import Articles, ArticlesImage, Gender, Subcategory, Brand
 
 
 class ArticlesImageAdmin(admin.StackedInline):
@@ -11,6 +11,9 @@ class ArticlesAdmin(admin.ModelAdmin):
     inlines = [ArticlesImageAdmin]
     prepopulated_fields = {"slug": ("title",)}
 
+admin.site.register(Gender)
+admin.site.register(Subcategory)
+admin.site.register(Brand)
 
 
 

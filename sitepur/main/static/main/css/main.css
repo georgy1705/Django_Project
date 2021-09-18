@@ -204,6 +204,7 @@ main .features h6 {
     border-top: solid gray 2px;
     padding-top: 20px;
     background: white;
+    height: 100vh;
 }
 .form-check-label55:hover {
     color: green;
@@ -247,6 +248,10 @@ main .features h6 {
 #size {
     font-weight: 570;
     color: red;
+}
+#btn-filter {
+    font-weight: bold;
+    letter-spacing: 4px;
 }
 
 

@@ -9,53 +9,58 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'main/slick/slick.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'main/slick/slick-theme.css' %}"/>
     <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
 </head>
 <body>
     <header class="header">
-        <table class="text" cellpadding="0" cellspacing="0">
-            <tr>
-                <td id="col1">
-                    <a href="{% url 'home' %}">
-                        <img src="{% static 'main/img/logo.png' %}" alt="" class="logoimg">
-                    </a>
-                    <span class="logo">Интернет-магазин</span>
-                </td>
-                <td id="col2">
-                    <nav>
-                        <ul class="topmenu">
-                            <li><a href="{% url 'catalog_home' %}" class="submenu-link">Обувь</a>
-                                <ul class="submenu">
-                                    <li><a href="{% url 'home' %}">Беговые кроссовки</a></li>
-                                    <li><a href="{% url 'home' %}">Повседневный стиль</a></li>
-                                    <li><a href="{% url 'home' %}">Jordan</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{% url 'about' %}">Одежда</a></li>
-                            <li><a href="{% url 'home' %}">Скидки</a></li>
+        <div class="container text">
+            <div class="nav">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'main/img/logo.png' %}" alt="" class="logoimg">
+                </a>
+                <ul class="topmenu">
+                    <li class="menu-item"><a href="{% url 'catalog_home' %}" class="submenu-link">Обувь</a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'home' %}">Беговые кроссовки</a></li>
+                            <li><a href="{% url 'home' %}">Повседневный стиль</a></li>
+                            <li><a href="{% url 'home' %}">Jordan</a></li>
                         </ul>
-                    </nav>
-                </td>
-                <td id="col3">
-                    <nav>
-                        <ul class="topmenu" id="topmenu2">
-                            <li><a href="#" title="Поиск по сайту"><i class="fas fa-search"></i></a></li>
-                            <li><a href="#" title="Корзина"><i class="fas fa-shopping-basket"></i></a></li>
-                            {% if not request.user.is_authenticated %}
-                            <li><a href="{% url 'login' %}" title="Войти или зарегистрироваться"><i class="fas fa-sign-in-alt"></i></a></li>
-                            {% endif %}
-                            <li><a href="#" title="Контакты"><i class="fas fa-address-book"></i></a></li>
-                            {% if request.user.is_authenticated %}
-                                <li><a href="{% url 'logout' %}" title="Выход из аккаунта"><i class="fas fa-sign-out-alt"></i></a></li>
-                            {% endif %}
-                        </ul>
-                    </nav>
-                </td>
-            </tr>
-        </table>
+                    </li>
+                    <li><a href="{% url 'about' %}">Одежда</a></li>
+                    <li><a href="{% url 'home' %}">Скидки</a></li>
+                </ul>
+                <form class="search" action="{% url 'search' %}" method="get">
+                    <div class="search">
+                        <div class="input-group">
+                          <div class="form-outline">
+                            <input type="search" id="form1" name="search" class="form-control search" />
+                          </div>
+                          <button type="submit" class="btn btn-success">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                    </div>
+                </form>
+                <button class="topmenu-open">
+                    <img src="{% static 'main/img/hamburger.svg' %}" alt="Open menu">
+                </button>
+            </div>
+<!--                    <nav>-->
+<!--                        <ul class="topmenu" id="topmenu2">-->
+<!--                            <li><a href="#" title="Поиск по сайту"><i class="fas fa-search"></i></a></li>-->
+<!--                            <li><a href="#" title="Корзина"><i class="fas fa-shopping-basket"></i></a></li>-->
+<!--                            {% if not request.user.is_authenticated %}-->
+<!--                            <li><a href="{% url 'login' %}" title="Войти или зарегистрироваться"><i class="fas fa-sign-in-alt"></i></a></li>-->
+<!--                            {% endif %}-->
+<!--                            <li><a href="#" title="Контакты"><i class="fas fa-address-book"></i></a></li>-->
+<!--                            {% if request.user.is_authenticated %}-->
+<!--                                <li><a href="{% url 'logout' %}" title="Выход из аккаунта"><i class="fas fa-sign-out-alt"></i></a></li>-->
+<!--                            {% endif %}-->
+<!--                        </ul>-->
+<!--                    </nav>-->
+            </div>
     </header>
     <main>
         {% if messages %}

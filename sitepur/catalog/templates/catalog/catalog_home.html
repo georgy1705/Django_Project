@@ -3,14 +3,16 @@
 {% block title %}Все кроссовки{% endblock %}
 
 {% block content %}
-        <nav aria-label="breadcrumb" class="breadcrumps">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'catalog_home' %}">Каталог</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Обувь</li>
-          </ol>
-        </nav>
-        <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <nav aria-label="breadcrumb" class="breadcrumps">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'catalog_home' %}">Каталог</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Обувь</li>
+                  </ol>
+                </nav>
+            </div>
             <div class="row">
                 <div class="col-2 d-flex justify-content-center filters">
                     <div class="filters_set">

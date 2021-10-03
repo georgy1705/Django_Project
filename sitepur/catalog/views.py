@@ -40,5 +40,14 @@ def FilterCatalogView(request):
                   {'catalog': catalog, 'genders': gen, 'subcategory': subcategory, 'brand': brand})
 
 
+def Search(request):
+    catalog = Articles.objects.filter(title__icontains=request.GET.get("search"))
+    gen = Gender.objects.all()
+    brand = Brand.objects.all()
+    subcategory = Subcategory.objects.all()
+    return render(request, 'catalog/catalog_home.html',
+                  {'catalog': catalog, 'genders': gen, 'subcategory': subcategory, 'brand': brand})
+
+
 
 

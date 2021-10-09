@@ -47,22 +47,19 @@
                     <img src="{% static 'main/img/hamburger.svg' %}" alt="Open menu">
                 </button>
             </div>
-<!--                    <nav>-->
-<!--                        <ul class="topmenu" id="topmenu2">-->
-<!--                            <li><a href="#" title="Поиск по сайту"><i class="fas fa-search"></i></a></li>-->
-<!--                            <li><a href="#" title="Корзина"><i class="fas fa-shopping-basket"></i></a></li>-->
-<!--                            {% if not request.user.is_authenticated %}-->
-<!--                            <li><a href="{% url 'login' %}" title="Войти или зарегистрироваться"><i class="fas fa-sign-in-alt"></i></a></li>-->
-<!--                            {% endif %}-->
-<!--                            <li><a href="#" title="Контакты"><i class="fas fa-address-book"></i></a></li>-->
-<!--                            {% if request.user.is_authenticated %}-->
-<!--                                <li><a href="{% url 'logout' %}" title="Выход из аккаунта"><i class="fas fa-sign-out-alt"></i></a></li>-->
-<!--                            {% endif %}-->
-<!--                        </ul>-->
-<!--                    </nav>-->
             </div>
     </header>
     <main>
+        <div class="sidebar">
+            <a href="#" title="Корзина" class="basket_a"><i class="fas fa-shopping-basket basket"></i></br>Корзина</a>
+            {% if not request.user.is_authenticated %}
+                <a href="{% url 'login' %}" title="Войти или зарегистрироваться"><i class="fas fa-sign-in-alt"></i></br>Вход</a>
+            {% endif %}
+            <a href="#" title="Контакты"><i class="fas fa-address-book"></i></br>Контакты</a>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}" title="Выход из аккаунта"><i class="fas fa-sign-out-alt"></i></br>Выход</a>
+            {% endif %}
+        </div>
         {% if messages %}
         {% for message in messages %}
             {% if message.tags == 'error' %}

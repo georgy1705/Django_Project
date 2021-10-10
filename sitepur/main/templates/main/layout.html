@@ -21,7 +21,7 @@
                     <img src="{% static 'main/img/logo.png' %}" alt="" class="logoimg">
                 </a>
                 <ul class="topmenu">
-                    <li class="menu-item"><a href="{% url 'catalog_home' %}" class="submenu-link">Обувь</a>
+                    <li class="menu-item"><a href="{% url 'products:catalog_home' %}" class="submenu-link">Обувь</a>
                         <ul class="submenu">
                             <li><a href="{% url 'home' %}">Беговые кроссовки</a></li>
                             <li><a href="{% url 'home' %}">Повседневный стиль</a></li>
@@ -31,7 +31,7 @@
                     <li><a href="{% url 'about' %}">Одежда</a></li>
                     <li><a href="{% url 'home' %}">Скидки</a></li>
                 </ul>
-                <form class="search" action="{% url 'search' %}" method="get">
+                <form class="search" action="{% url 'products:search' %}" method="get">
                     <div class="search">
                         <div class="input-group">
                           <div class="form-outline">

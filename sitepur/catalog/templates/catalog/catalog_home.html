@@ -8,7 +8,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumps">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'catalog_home' %}">Каталог</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'products:catalog_home' %}">Каталог</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Обувь</li>
                   </ol>
                 </nav>
@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-2 d-flex justify-content-center filters">
                     <div class="filters_set">
-                        <form action="{% url 'filter' %}" method="get">
+                        <form action="{% url 'products:filter' %}" method="get">
                             <div class="accordeonWrapper type_1">
                                 <div class="elemAccordeon">
                                     <div class="headingElem">ПОЛ</div>
@@ -67,7 +67,7 @@
             {% for el in catalog %}
                 <div class="d-inline-flex">
                     <div class="card text-white bg-dark mb-3" style="width:16rem; height: 24rem;">
-                      <a href="{% url 'shoes-detail' el.slug %}">
+                      <a href="{{ el.get_absolute_url }}">
                           <img class="card-img-top" src="{{ el.img_thumbnail.url }}" alt="Card image cap">
                       </a>
                       <div class="card-body">
@@ -75,7 +75,7 @@
                           <span class="align-top">{{ el.price }} &#8381</span>
                           <div style="clear: both"></div>
                           <span class="bthing">
-                            <a href="{% url 'shoes-detail' el.slug %}" class="btn btn-info btn-sm">Купить</a>
+                            <a href="{{ el.get_absolute_url }}" class="btn btn-info btn-sm">Купить</a>
                           </span>
                       </div>
                     </div>

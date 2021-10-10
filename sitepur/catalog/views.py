@@ -1,15 +1,22 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Articles, ArticlesImage, Gender, Subcategory, Brand
+from .models import Articles, ArticlesImage, Gender, Subcategory, Brand, Category
 from django.views.generic import DetailView
 from django.db.models import Q
 
 
-def catalog_home(request):
-    catalog = Articles.objects.all()
+def catalog_home(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    catalog = Articles.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        catalog = Articles.objects.filter(category=category)
     gen = Gender.objects.all()
     brand = Brand.objects.all()
     subcategory = Subcategory.objects.all()
-    return render(request, 'catalog/catalog_home.html', {'catalog': catalog, 'genders': gen, 'subcategory': subcategory, 'brand': brand})
+    return render(request, 'catalog/catalog_home.html', {'catalog': catalog, 'category': category, 'categories': categories,
+                                                         'genders': gen, 'subcategory': subcategory,
+                                                         'brand': brand})
 
 class ShoesDetailView(DetailView):
     model = Articles

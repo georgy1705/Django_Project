@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Articles, ArticlesImage, Gender, Subcategory, Brand, Category
 from django.views.generic import DetailView
 from django.db.models import Q
+from cart.forms import CartAddProductForm
 
 
 def catalog_home(request, category_slug=None):
@@ -28,6 +29,7 @@ class ShoesDetailView(DetailView):
         context = super(ShoesDetailView, self).get_context_data(**kwargs)
         # Add extra context from another model
         context['articleimg'] = ArticlesImage.objects.filter(post=self.object)
+        context['cart_product_form'] = CartAddProductForm()
         return context
 
 

@@ -329,6 +329,29 @@ main .features h6 {
     color: red;
 }
 
+.ProductImg {
+    width: 170px;
+    height: 120px;
+}
+
+.bucket {
+    padding-top: 20px;
+}
+
+.bucket tr td a {
+    text-decoration: none;
+    color: red;
+}
+
+.bucket td {
+    display:table-cell !important;
+    vertical-align:middle !important;
+}
+
+.text-right a {
+    margin-left: 20px;
+}
+
 #btn-filter {
     font-weight: bold;
     letter-spacing: 4px;

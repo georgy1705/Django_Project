@@ -1,7 +1,7 @@
 {% extends 'main/layout.html' %}
 
 {% block title %}Кроссовки {{ article.title }}{% endblock %}
-
+{% load static %}
 {% block content %}
     <div class="features">
         <nav aria-label="breadcrumb" class="breadcrumps" id="crumps">
@@ -12,105 +12,106 @@
             <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
           </ol>
         </nav>
-        {% if articleimg %}
-            <div class="container-fluid detail_product">
-                <div class="row justify-content-right">
-                    <div class="col-sm-6 detailtablecol1">
-                        <div class="single-item">
-                            {% for el in articleimg %}
-                                <div class="slick_item"><img src="{{ el.img_detail.url }}" width="100%" height="400px"></div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-sm-3 detailtablecol2">
-                        {{ article.title }}
-                        <div class="row">
-                            <div class="col-sm">
-                                <h6>Выберите размер</h6>
-                            </div>
-                            <div class="col-sm">
-                                <a href="#" id="acoldetail"><h6>Таблица размеров <i class="fa fa-info" aria-hidden="true"></i></h6></a>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-sm">
-                                <div class="btn-group btn-group-toggle">
-                                    <input type="radio" class="btn-check" name="options" value="US 8" onclick="check" id="option1" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option1">US 8</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 8.5" id="option2" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option2">US 8.5</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 9" id="option3" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option3">US 9</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 9.5" id="option4" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option4">US 9.5</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-sm">
-                                <div class="btn-group btn-group-toggle">
-                                    <input type="radio" class="btn-check" name="options" value="US 10" onclick="check" id="option5" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option5">US 10</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 10.5" id="option6" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option6">US 10.5</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 11" id="option7" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option7">US 11</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 11.5" id="option8" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option8">US 11.5</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-sm">
-                                <div class="btn-group btn-group-toggle">
-                                    <input type="radio" class="btn-check" name="options" value="US 12" onclick="check" id="option9" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option9">US 12</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 12.5" id="option10" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option10">US 12.5</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 13" id="option11" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option11">US 13</label>
-                                    <input type="radio" class="btn-check" name="options" value="US 14" id="option12" autocomplete="off">
-                                    <label class="btn btn-secondary" for="option12">US 14</label>
-                                </div>
-                            </div>
-                        </div>
-                        <input class="form-control" id = "size" type="text" readonly>
-                        <div class="row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-warning">Добавить в корзину</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 detailtablecol3">
-                        {{ article.price }} &#8381
+
+        <div class="container-fluid detail_product">
+            <div class="row justify-content-right">
+                <div class="col-sm-6 detailtablecol1">
+                    <div class="single-item">
+                        {% for el in articleimg %}
+                            <div class="slick_item"><img src="{% if articleimg %}{{ el.img_detail.url }}{% else %}{% static 'main/img/no-img.png' %}{% endif %}" width="100%" height="400px"></div>
+                        {% endfor %}
                     </div>
                 </div>
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                          <h5 class="mb-0">
-                            <button class="btn btn-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Описание
-                            </button>
-                              <button class="btn btn-light" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                              Характеристики
-                              </button>
-                          </h5>
+                <div class="col-sm-3 detailtablecol2">
+                    {{ article.title }}
+                    <div class="row">
+                        <div class="col-sm">
+                            <h6>Выберите размер</h6>
                         </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                          <div class="card-body">
-                            {{ article.description }}
-                          </div>
+                        <div class="col-sm">
+                            <a href="#" id="acoldetail"><h6>Таблица размеров <i class="fa fa-info" aria-hidden="true"></i></h6></a>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                            Test
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm">
+                            <div class="btn-group btn-group-toggle">
+                                <input type="radio" class="btn-check" name="options" value="US 8" onclick="check" id="option1" autocomplete="off">
+                                <label class="btn btn-secondary" for="option1">US 8</label>
+                                <input type="radio" class="btn-check" name="options" value="US 8.5" id="option2" autocomplete="off">
+                                <label class="btn btn-secondary" for="option2">US 8.5</label>
+                                <input type="radio" class="btn-check" name="options" value="US 9" id="option3" autocomplete="off">
+                                <label class="btn btn-secondary" for="option3">US 9</label>
+                                <input type="radio" class="btn-check" name="options" value="US 9.5" id="option4" autocomplete="off">
+                                <label class="btn btn-secondary" for="option4">US 9.5</label>
                             </div>
                         </div>
                     </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm">
+                            <div class="btn-group btn-group-toggle">
+                                <input type="radio" class="btn-check" name="options" value="US 10" onclick="check" id="option5" autocomplete="off">
+                                <label class="btn btn-secondary" for="option5">US 10</label>
+                                <input type="radio" class="btn-check" name="options" value="US 10.5" id="option6" autocomplete="off">
+                                <label class="btn btn-secondary" for="option6">US 10.5</label>
+                                <input type="radio" class="btn-check" name="options" value="US 11" id="option7" autocomplete="off">
+                                <label class="btn btn-secondary" for="option7">US 11</label>
+                                <input type="radio" class="btn-check" name="options" value="US 11.5" id="option8" autocomplete="off">
+                                <label class="btn btn-secondary" for="option8">US 11.5</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm">
+                            <div class="btn-group btn-group-toggle">
+                                <input type="radio" class="btn-check" name="options" value="US 12" onclick="check" id="option9" autocomplete="off">
+                                <label class="btn btn-secondary" for="option9">US 12</label>
+                                <input type="radio" class="btn-check" name="options" value="US 12.5" id="option10" autocomplete="off">
+                                <label class="btn btn-secondary" for="option10">US 12.5</label>
+                                <input type="radio" class="btn-check" name="options" value="US 13" id="option11" autocomplete="off">
+                                <label class="btn btn-secondary" for="option11">US 13</label>
+                                <input type="radio" class="btn-check" name="options" value="US 14" id="option12" autocomplete="off">
+                                <label class="btn btn-secondary" for="option12">US 14</label>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="form-control" id = "size" type="text" readonly>
+                    <div class="row">
+                        <div class="col">
+                            <form action="{% url 'cart:cart_add' article.id %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <button type="submit" value="В корзину" class="btn btn-warning">Добавить в корзину</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 detailtablecol3">
+                    {{ article.price }} &#8381
+                </div>
             </div>
-        {% else %}
-            <p>На данный момент описание товара отсутствует</p>
-        {% endif %}
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Описание
+                        </button>
+                          <button class="btn btn-light" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                          Характеристики
+                          </button>
+                      </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body">
+                        {{ article.description }}
+                      </div>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                        Test
+                        </div>
+                    </div>
+                </div>
+        </div>
     </div>
 {% endblock %}

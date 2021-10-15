@@ -1,0 +1,59 @@
+{% extends 'main/layout.html' %}
+{% block title %}Корзина покупок{% endblock %}
+
+{% block content %}
+    <div class="container bucket">
+        <h1>Корзина покупок</h1>
+        <table class="table align-middle table-secondary">
+            <thead>
+                <tr>
+                    <th>Картинка</th>
+                    <th>Товар</th>
+                    <th>Обновить кол-во</th>
+                    <th>Удалить</th>
+                    <th>Кол-во</th>
+                    <th>Цена за шт</th>
+                    <th>Общая стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <tr>
+                            <td>
+                                <a href="{{ product.get_absolute_url }}">
+                                    <img src="{{ product.img_thumbnail.url }}" class="ProductImg">
+                                </a>
+                            </td>
+                            <td>{{ product.title }}</td>
+                            <td>
+                                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                    {{ item.update_quantity_form.quantity }}
+                                    {{ item.update_quantity_form.update }}
+                                    <input type="submit" value="Обновить">
+                                    {% csrf_token %}
+                                </form>
+                            </td>
+                            <td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
+                            <td>
+                                {{ item.quantity }}
+                            </td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.total_price }}</td>
+                        </tr>
+
+            {% endwith %}
+            {% endfor %}
+            </tbody>
+            <tr>
+                <td style="font-weight: bold; font-size: 18px;">Всего</td>
+                <td colspan="5"></td>
+                <td style="font-weight: bold; font-size: 18px;">{{ cart.get_total_price }}</td>
+            </tr>
+        </table>
+        <p class="text-right">
+            <a href="{% url 'products:catalog_home' %}" class="btn btn-info">В магазин</a>
+            <a href="#" class="btn btn-info">Оформить заказ</a>
+        </p>
+    </div>
+{% endblock %}

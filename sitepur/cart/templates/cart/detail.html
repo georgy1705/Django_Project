@@ -12,6 +12,7 @@
                     <th>Обновить кол-во</th>
                     <th>Удалить</th>
                     <th>Кол-во</th>
+                    <th>Размер</th>
                     <th>Цена за шт</th>
                     <th>Общая стоимость</th>
                 </tr>
@@ -38,6 +39,9 @@
                             <td>
                                 {{ item.quantity }}
                             </td>
+                            <td>
+                                123
+                            </td>
                             <td>{{ item.price }}</td>
                             <td>{{ item.total_price }}</td>
                         </tr>
@@ -47,7 +51,7 @@
             </tbody>
             <tr>
                 <td style="font-weight: bold; font-size: 18px;">Всего</td>
-                <td colspan="5"></td>
+                <td colspan="6"></td>
                 <td style="font-weight: bold; font-size: 18px;">{{ cart.get_total_price }}</td>
             </tr>
         </table>

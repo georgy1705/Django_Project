@@ -1,10 +1,13 @@
 from django.contrib import admin
-from .models import Articles, ArticlesImage, Gender, Subcategory, Brand, Category
+from .models import Articles, ArticlesImage, Gender, Subcategory, Brand, Category, Size
 from django.utils.safestring import mark_safe
 
 
 class ArticlesImageAdmin(admin.StackedInline):
     model = ArticlesImage
+
+class SizeAdmin(admin.StackedInline):
+    model = Size
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -13,7 +16,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Articles)
 class ArticlesAdmin(admin.ModelAdmin):
-    inlines = [ArticlesImageAdmin]
+    inlines = [ArticlesImageAdmin, SizeAdmin]
     list_display = ('title', 'slug', 'price', 'image_show', 'available')
     list_filter = ('available',)
     list_editable = ('price', 'available')

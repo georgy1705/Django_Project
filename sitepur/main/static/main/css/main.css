@@ -352,9 +352,19 @@ main .features h6 {
     margin-left: 20px;
 }
 
+.number {
+    font-size: 18px;
+}
+
 #btn-filter {
     font-weight: bold;
     letter-spacing: 4px;
+}
+
+.sizeButt {
+    max-width: 50px !important;
+    font-size: 14px !important;
+    justify-content: center !important;
 }
 
 @media screen and (min-width: 1921px) {

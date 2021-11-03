@@ -17,18 +17,24 @@
     <header class="header">
         <div class="container text">
             <div class="nav">
-                <a href="{% url 'home' %}">
+                <a href="{% url 'products:catalog_home' %}">
                     <img src="{% static 'main/img/logo.png' %}" alt="" class="logoimg">
                 </a>
                 <ul class="topmenu">
-                    <li class="menu-item"><a href="{% url 'products:catalog_home' %}" class="submenu-link">Обувь</a>
+                    <li class="menu-item"><a href="/catalog/obuv/" class="submenu-link">Обувь</a>
                         <ul class="submenu">
                             <li><a href="{% url 'home' %}">Беговые кроссовки</a></li>
                             <li><a href="{% url 'home' %}">Повседневный стиль</a></li>
                             <li><a href="{% url 'home' %}">Jordan</a></li>
                         </ul>
                     </li>
-                    <li><a href="{% url 'about' %}">Одежда</a></li>
+                    <li class="menu-item"><a href="/catalog/odezhda/" class="submenu-link">Одежда</a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'home' %}">Толстовки</a></li>
+                            <li><a href="{% url 'home' %}">Футболки</a></li>
+                            <li><a href="{% url 'home' %}">Ветровки</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{% url 'home' %}">Скидки</a></li>
                 </ul>
                 <form class="search" action="{% url 'products:search' %}" method="get">

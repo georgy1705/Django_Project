@@ -8,7 +8,7 @@ from imagekit.processors import ResizeToFill
 
 
 class Category(models.Model):
-    name = models.CharField("Категория", max_length = 50, db_index=True)
+    name = models.CharField("Категория", unique=True, max_length = 50, db_index=True)
     slug = models.SlugField(max_length = 50, unique=True)
 
     class Meta:
@@ -31,6 +31,7 @@ class Gender(models.Model):
     class Meta:
         verbose_name = 'Пол'
         verbose_name_plural = 'Пол'
+
 
 class Subcategory(models.Model):
     name = models.CharField("Подкатегория", max_length = 20, db_index=True)
@@ -64,8 +65,8 @@ class Articles(models.Model):
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     description = models.TextField('Описание вещи')
     available = models.BooleanField(default=True)
-    category = models.ForeignKey(Category, related_name="products", on_delete=models.CASCADE)
-    gender = models.ForeignKey(Gender, verbose_name="Категория", on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, verbose_name="Категория", related_name="products", on_delete=models.CASCADE)
+    gender = models.ForeignKey(Gender, verbose_name="Пол", on_delete=models.SET_NULL, null=True)
     subcategory = models.ForeignKey(Subcategory, verbose_name="Подкатегория", on_delete=models.SET_NULL, null=True)
     brand = models.ForeignKey(Brand, verbose_name="Бренд", on_delete=models.SET_NULL, null=True)
 
@@ -95,3 +96,13 @@ class ArticlesImage(models.Model):
         verbose_name = 'Фотография модели'
         verbose_name_plural = 'Фотографии модели кроссовок'
 
+class Size(models.Model):
+    post = models.ForeignKey(Articles, default=None, on_delete=models.CASCADE)
+    size = models.CharField('Размер', max_length=10)
+
+    def __str__(self):
+        return self.post.title
+
+    class Meta:
+        verbose_name = 'Размер модели'
+        verbose_name_plural = 'Размеры моделей'

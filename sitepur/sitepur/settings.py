@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'mptt',
     'phonenumber_field',
     'imagekit',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

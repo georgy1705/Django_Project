@@ -1,16 +1,17 @@
 {% extends 'main/layout.html' %}
-{% block title %}Корзина покупок{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block title %}Оформление заказа{% endblock %}
 
 {% block content %}
+
     <div class="container bucket">
-        <h1>Корзина покупок</h1>
+        <h1>Оформление заказа</h1>
         <table class="table align-middle table-secondary">
             <thead>
                 <tr>
                     <th>Картинка</th>
                     <th>Товар</th>
-                    <th>Обновить кол-во</th>
-                    <th>Удалить</th>
                     <th>Кол-во</th>
                     <th>Размер</th>
                     <th>Цена за шт</th>
@@ -28,15 +29,6 @@
                             </td>
                             <td>{{ product.title }}</td>
                             <td>
-                                <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                                    {{ item.update_quantity_form.quantity }}
-                                    {{ item.update_quantity_form.update }}
-                                    <input type="submit" value="Обновить">
-                                    {% csrf_token %}
-                                </form>
-                            </td>
-                            <td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
-                            <td>
                                 {{ item.quantity }}
                             </td>
                             <td>
@@ -51,13 +43,20 @@
             </tbody>
             <tr>
                 <td style="font-weight: bold; font-size: 18px;">Всего</td>
-                <td colspan="6"></td>
+                <td colspan="4"></td>
                 <td style="font-weight: bold; font-size: 18px;">{{ cart.get_total_price }}</td>
             </tr>
         </table>
-        <p class="text-right">
-            <a href="{% url 'products:catalog_home' %}" class="btn btn-info">В магазин</a>
-            <a href="{% url 'checkout' %}" class="btn btn-info">Оформить заказ</a>
-        </p>
+        <hr>
+        <div class="order">
+            <h2>Форма заказа</h2>
+            <form action="" method="POST" class="order">
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success btn-block" values="Оформить заказ">
+            </form>
+        </div>
+
     </div>
+
+
 {% endblock %}

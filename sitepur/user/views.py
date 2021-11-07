@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm, UserLoginForm
+from .forms import UserRegisterForm, UserLoginForm, OrderForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from .models import User
+from cart.cart import Cart
 
 def register(request):
     if request.method == 'POST':
@@ -38,4 +40,23 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+def checkout(request):
+    check = Cart(request)
+    form = OrderForm(request.POST or None)
+    return render(request, 'user/checkout.html', {'check': check, "form": form})
+
+
+# class ProfileView(CartMixin, View):
+#
+#     def get(self, request, *args, **kwargs):
+#         user = User.objects.get(user=request.user)
+#         # orders = Order.objects.filter(user=user).order_by('-created_at')
+#         # categories = Category.objects.all()
+#
+#         return render(
+#             request,
+#             'profile.html',
+#             {'cart': self.cart}
+#         )
 

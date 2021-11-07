@@ -334,6 +334,14 @@ main .features h6 {
     height: 120px;
 }
 
+.order {
+    padding-bottom: 40px;
+}
+
+.order h2 {
+    text-align: center;
+}
+
 .bucket {
     padding-top: 20px;
 }

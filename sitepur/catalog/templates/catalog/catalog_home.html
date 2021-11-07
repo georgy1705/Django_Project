@@ -1,6 +1,6 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}Все кроссовки{% endblock %}
+{% block title %}Все товары{% endblock %}
 
 {% block content %}
         <div class="container">
@@ -9,14 +9,14 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
                     <li class="breadcrumb-item"><a href="{% url 'products:catalog_home' %}">Каталог</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Обувь</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
                   </ol>
                 </nav>
             </div>
             <div class="row">
                 <div class="col-2 d-flex justify-content-center filters">
                     <div class="filters_set">
-                        {% if request.path == '/catalog/filter/' or request.path == '/catalog/' %}
+                        {% if request.path == '/catalog/filter/' or request.path == '/catalog/' or request.path == '/catalog/search/' %}
                         <form action="{% url 'products:filter1' %}" method="get">
                         {% else %}
                         <form action="/catalog/{{ category.slug }}/filter/" method="get">

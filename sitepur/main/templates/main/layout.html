@@ -57,6 +57,7 @@
     </header>
     <main>
         <div class="sidebar">
+            <a href="#" title="Личный кабинет"><i class="fa fa-user"></i></br>Личный кабинет</a>
             {% if not request.get_full_path == "/cart/" %}
                 <a href="{% url 'cart:cart_detail' %}" title="Корзина" class="basket_a"><i class="fas fa-shopping-basket basket"></i></br>Корзина</a>
             {% endif %}

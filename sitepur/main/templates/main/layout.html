@@ -59,7 +59,8 @@
         <div class="sidebar">
             <a href="#" title="Личный кабинет"><i class="fa fa-user"></i></br>Личный кабинет</a>
             {% if not request.get_full_path == "/cart/" %}
-                <a href="{% url 'cart:cart_detail' %}" title="Корзина" class="basket_a"><i class="fas fa-shopping-basket basket"></i></br>Корзина</a>
+                <a href="{% url 'cart:cart_detail' %}" title="Корзина" class="basket_a"><i class="fas fa-shopping-basket basket">
+                </i></br>Корзина <span class="badge badge-pill badge-danger">{{ cart.products.count }}</span></a>
             {% endif %}
             {% if not request.user.is_authenticated %}
                 <a href="{% url 'login' %}" title="Войти или зарегистрироваться"><i class="fas fa-sign-in-alt"></i></br>Вход</a>
@@ -72,12 +73,15 @@
         {% if messages %}
         {% for message in messages %}
             {% if message.tags == 'error' %}
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert" style="text-align: center; margin-left: 10vh;">
                     {{ message }}
                 </div>
             {% else %}
-                <div class="alert alert-{{ message.tags }}" role="alert">
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="text-align: center; margin-left: 10vh;">
                     {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             {% endif %}
         {% endfor %}

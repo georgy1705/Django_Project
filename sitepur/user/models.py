@@ -5,6 +5,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 from .managers import UserManager
 from django.utils import timezone
 
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique = True)
     phone = PhoneNumberField('Телефон', unique=True, error_messages={
@@ -17,7 +19,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         error_messages={
             'unique': "Суперпользователь с таким именем уже существует.",
         },)
-    orders = models.ManyToManyField('Order', verbose_name='Заказы пользователя')
 
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
@@ -67,6 +68,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         # "Is the user active?"
         return self.active
 
+
+class Customer(models.Model):
+    user = models.ForeignKey("User", verbose_name='Пользователь', on_delete=models.CASCADE)
+    orders = models.ManyToManyField('Order', verbose_name='Заказы покупателя', related_name='related_customer')
+
+    def __str__(self):
+        return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
+
+
+
 class Order(models.Model):
     STATUS_NEW = 'new'
     STATUS_IN_PROGRESS = 'in_progress'
@@ -88,15 +99,19 @@ class Order(models.Model):
         (BUYING_TYPE_DELIVERY, 'Доставка')
     )
 
-    customer = models.ForeignKey(User, verbose_name='Покупатель', on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, verbose_name='Покупатель', related_name='related_orders', on_delete=models.CASCADE)
     first_name = models.CharField('Имя', max_length=30)
     last_name = models.CharField('Фамилия', max_length=30)
-    phone = PhoneNumberField('Телефон', unique=True, error_messages={
+    phone = PhoneNumberField('Телефон', error_messages={
         'unique': "Пользователь с таким телефоном уже существует.",
     }, )
+    cart = models.ForeignKey("catalog.Cart", verbose_name='Корзина', on_delete=models.CASCADE, null=True, blank=True)
     address = models.CharField(max_length=60, verbose_name='Адрес')
     status = models.CharField(max_length=60, verbose_name='Статус заказа', choices=STATUS_CHOICES, default=STATUS_NEW)
-    buying_type = models.CharField(max_length=60, verbose_name='Тип заказа', choices=BUYING_TYPE_CHOICES, default=BUYING_TYPE_SELF)
+    buying_type = models.CharField(
+        max_length=60, verbose_name='Тип заказа',
+        choices=BUYING_TYPE_CHOICES,
+        default=BUYING_TYPE_SELF)
     comment = models.TextField(verbose_name='Комментарий к заказу', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True, verbose_name='Дата создания заказа')
     order_date = models.DateField(verbose_name='Дата получения заказа', default=timezone.now)

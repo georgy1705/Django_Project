@@ -1,5 +1,4 @@
 {% extends 'main/layout.html' %}
-{% load crispy_forms_tags %}
 
 {% block title %}Оформление заказа{% endblock %}
 
@@ -12,14 +11,14 @@
                 <tr>
                     <th>Картинка</th>
                     <th>Товар</th>
-                    <th>Кол-во</th>
-                    <th>Размер</th>
                     <th>Цена за шт</th>
+                    <th>Размер</th>
+                    <th>Кол-во</th>
                     <th>Общая стоимость</th>
                 </tr>
             </thead>
             <tbody>
-                {% for item in cart %}
+                {% for item in cart.products.all %}
                     {% with product=item.product %}
                         <tr>
                             <td>
@@ -29,13 +28,15 @@
                             </td>
                             <td>{{ product.title }}</td>
                             <td>
-                                {{ item.quantity }}
+                                {{ product.price }}
                             </td>
                             <td>
                                 123
                             </td>
-                            <td>{{ item.price }}</td>
-                            <td>{{ item.total_price }}</td>
+                            <td>
+                                {{ item.qty }}
+                            </td>
+                            <td>{{ item.final_price }}</td>
                         </tr>
 
             {% endwith %}
@@ -43,19 +44,20 @@
             </tbody>
             <tr>
                 <td style="font-weight: bold; font-size: 18px;">Всего</td>
-                <td colspan="4"></td>
-                <td style="font-weight: bold; font-size: 18px;">{{ cart.get_total_price }}</td>
+                <td colspan="3"></td>
+                <td style="font-weight: bold; font-size: 18px;">{{ cart.total_products }}</td>
+                <td style="font-weight: bold; font-size: 18px;">{{ cart.final_price }}</td>
             </tr>
         </table>
         <hr>
         <div class="order">
             <h2>Форма заказа</h2>
-            <form action="" method="POST" class="order">
-                {{ form.as_p }}
+            <form action="{% url 'make-order' %}" method="POST" class="order">
+                {% csrf_token %}
+                {{ form.as_p  }}
                 <input type="submit" class="btn btn-success btn-block" values="Оформить заказ">
             </form>
         </div>
-
     </div>
 
 

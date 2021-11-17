@@ -1,13 +1,14 @@
 from django.urls import path
 from . import views
 
+
 app_name = 'catalog'
 
 urlpatterns = [
-    path('', views.catalog_home, name='catalog_home'),
+    path('', views.CatalogHome.as_view(), name='catalog_home'),
     path("filter/", views.FilterCatalogView, name="filter1"),
     path("<slug:category_slug>/filter/", views.FilterCatalogView, name="filter"),
-    path("search/", views.Search, name="search"),
-    path('<slug:category_slug>/', views.catalog_home, name='catalog_home_by_category'),
+    path("search/", views.Search.as_view(), name="search"),
+    path('<slug:category_slug>/', views.CatalogHome.as_view(), name='catalog_home_by_category'),
     path('<slug:category_slug>/<slug:slug>', views.ShoesDetailView.as_view(), name='shoes-detail')
 ]

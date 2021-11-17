@@ -3,22 +3,22 @@
 
 {% block content %}
     <div class="container bucket">
-        <h1>Корзина покупок</h1>
+        <h1>Корзина покупок {% if not cart.products.count %}пуста{% endif %}</h1>
+        {% if cart.products.count %}
         <table class="table align-middle table-secondary">
             <thead>
                 <tr>
                     <th>Картинка</th>
                     <th>Товар</th>
-                    <th>Обновить кол-во</th>
                     <th>Удалить</th>
-                    <th>Кол-во</th>
-                    <th>Размер</th>
                     <th>Цена за шт</th>
+                    <th>Размер</th>
+                    <th>Кол-во</th>
                     <th>Общая стоимость</th>
                 </tr>
             </thead>
             <tbody>
-                {% for item in cart %}
+                {% for item in cart.products.all %}
                     {% with product=item.product %}
                         <tr>
                             <td>
@@ -27,23 +27,22 @@
                                 </a>
                             </td>
                             <td>{{ product.title }}</td>
-                            <td>
-                                <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                                    {{ item.update_quantity_form.quantity }}
-                                    {{ item.update_quantity_form.update }}
-                                    <input type="submit" value="Обновить">
-                                    {% csrf_token %}
-                                </form>
-                            </td>
                             <td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
                             <td>
-                                {{ item.quantity }}
+                                {{ product.price }}
                             </td>
                             <td>
                                 123
                             </td>
-                            <td>{{ item.price }}</td>
-                            <td>{{ item.total_price }}</td>
+                            <td>
+                                <form action="{% url 'cart:cart_change' product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="number" name="qty" class="form-control" min="1" max="5" value="{{ item.qty }}" style="width: 65px;">
+                                    <br>
+                                    <input type="submit" class="btn btn-outline-secondary btn-sm" value="Изменить кол-во">
+                                </form>
+                            </td>
+                            <td>{{ item.final_price }}</td>
                         </tr>
 
             {% endwith %}
@@ -51,13 +50,15 @@
             </tbody>
             <tr>
                 <td style="font-weight: bold; font-size: 18px;">Всего</td>
-                <td colspan="6"></td>
-                <td style="font-weight: bold; font-size: 18px;">{{ cart.get_total_price }}</td>
+                <td colspan="4"></td>
+                <td style="font-weight: bold; font-size: 18px;">{{ cart.total_products }}</td>
+                <td style="font-weight: bold; font-size: 18px;">{{ cart.final_price }}</td>
             </tr>
         </table>
         <p class="text-right">
             <a href="{% url 'products:catalog_home' %}" class="btn btn-info">В магазин</a>
             <a href="{% url 'checkout' %}" class="btn btn-info">Оформить заказ</a>
         </p>
+        {% endif %}
     </div>
 {% endblock %}

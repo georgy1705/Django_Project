@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Articles, ArticlesImage, Gender, Subcategory, Brand, Category, Size
+from .models import *
 from django.utils.safestring import mark_safe
 
 
@@ -33,6 +33,9 @@ class ArticlesAdmin(admin.ModelAdmin):
 admin.site.register(Gender)
 admin.site.register(Subcategory)
 admin.site.register(Brand)
+admin.site.register(Cart)
+admin.site.register(CartProduct)
+admin.site.register(Customer)
 
 
 

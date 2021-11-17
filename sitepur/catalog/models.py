@@ -2,10 +2,13 @@ from django.db import models
 from django.urls import reverse
 from filer.fields.image import FilerImageField
 from slugify import slugify
+from django.contrib.auth import get_user_model
+from user.models import Customer
 
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 
+User = get_user_model()
 
 class Category(models.Model):
     name = models.CharField("Категория", unique=True, max_length = 50, db_index=True)
@@ -84,6 +87,35 @@ class Articles(models.Model):
 
     def get_absolute_url(self):
         return reverse('catalog:shoes-detail', args=[self.id, self.slug])
+
+
+class CartProduct(models.Model):
+    user = models.ForeignKey(Customer, verbose_name='Покупатель', on_delete=models.CASCADE)
+    cart = models.ForeignKey("Cart", verbose_name='Корзина', on_delete=models.CASCADE)
+    product = models.ForeignKey(Articles, verbose_name='Товар', on_delete=models.CASCADE)
+    qty = models.PositiveIntegerField(default=1)
+    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
+
+    def __str__(self):
+        return "Продукт: {}".format(self.product.title)
+
+    def save(self, *args, **kwargs):
+        self.final_price = self.qty * self.product.price
+        super().save(*args, **kwargs)
+
+
+class Cart(models.Model):
+    owner = models.ForeignKey(Customer, null=True, verbose_name='Владелец', on_delete=models.CASCADE)
+    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_products')
+    total_products = models.PositiveIntegerField(default=0)
+    final_price = models.DecimalField(max_digits=9, default=0, decimal_places=2, verbose_name='Общая цена')
+    in_order = models.BooleanField(default=False)
+    for_anonymous_user = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id)
+
+
 
 class ArticlesImage(models.Model):
     post = models.ForeignKey(Articles, default=None, on_delete=models.CASCADE)

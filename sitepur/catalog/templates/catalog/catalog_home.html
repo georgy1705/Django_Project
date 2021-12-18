@@ -5,7 +5,7 @@
 {% block content %}
         <div class="container">
             <div class="row">
-                <nav aria-label="breadcrumb" class="breadcrumps">
+                <nav aria-label="breadcrumb" class="breadcrumbs">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
                     <li class="breadcrumb-item"><a href="{% url 'products:catalog_home' %}">Каталог</a></li>
@@ -13,8 +13,8 @@
                   </ol>
                 </nav>
             </div>
-            <div class="row">
-                <div class="col-2 d-flex justify-content-center filters">
+            <div class="row items">
+                <div class="col-3 justify-content-center filters">
                     <div class="filters_set">
                         {% if request.path == '/catalog/filter/' or request.path == '/catalog/' or request.path == '/catalog/search/' %}
                         <form action="{% url 'products:filter1' %}" method="get">
@@ -66,11 +66,10 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-10">
         {% if catalog %}
+                <div class="col-9 colItems">
             {% for el in catalog %}
-                <div class="d-inline-flex">
-                    <div class="card text-white bg-dark mb-3" style="width:16rem; height: 24rem;">
+                    <div class="card text-white bg-dark mb-3 item">
                       <a href="{{ el.get_absolute_url }}">
                           <img class="card-img-top" src="{{ el.img_thumbnail.url }}" alt="Card image cap">
                       </a>
@@ -83,12 +82,11 @@
                           </span>
                       </div>
                     </div>
-                </div>
             {% endfor %}
+                </div>
         {% else %}
             <p>На данный момент товары отсутствуют</p>
         {% endif %}
                 </div>
             </div>
-        </div>
 {% endblock %}

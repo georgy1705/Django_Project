@@ -42,8 +42,9 @@ class ShoesDetailView(CartMixin, DetailView):
 
 
 def FilterCatalogView(request, category_slug=None):
-    customer = Customer.objects.get(user=request.user)
-    cart = Cart.objects.get(owner=customer)
+    if request.user.is_authenticated:
+        customer = Customer.objects.get(user=request.user)
+        cart = Cart.objects.get(owner=customer)
     category = None
     categories = Category.objects.all()
     catalog = Articles.objects.filter(available=True)
@@ -61,9 +62,14 @@ def FilterCatalogView(request, category_slug=None):
 
     gen = Gender.objects.all()
     brand = Brand.objects.all()
-    return render(request, 'catalog/catalog_home.html',
+    if request.user.is_authenticated:
+        return render(request, 'catalog/catalog_home.html',
                   {'catalog': catalog, 'category': category, 'categories': categories,
                    'genders': gen, 'subcategory': subcategory, 'brand': brand, 'cart': cart})
+    else:
+        return render(request, 'catalog/catalog_home.html',
+                      {'catalog': catalog, 'category': category, 'categories': categories,
+                       'genders': gen, 'subcategory': subcategory, 'brand': brand})
 
 
 class Search(CartMixin, View):

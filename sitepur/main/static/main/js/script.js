@@ -9,7 +9,7 @@ $(document).ready(function(){
         cssEase: 'linear'
     });
     $('[id^="option"]').on('click', function (){
-        var el=document.getElementById("size");
+        const el=document.getElementById("size");
         el.placeholder = "Выбранный размер: " + $('input[name=options]:checked').val()
     });
 

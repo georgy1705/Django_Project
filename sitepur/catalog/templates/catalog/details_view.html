@@ -51,12 +51,11 @@
                     <input class="form-control" id = "size" type="text" readonly>
                     <div class="row">
                         <div class="col">
-                            <a href="{% url 'cart:cart_add' article.id %}" class="btn btn-warning">Добавить в корзину</a>
-<!--                            <form action="{% url 'cart:cart_add' article.id %}" method="post" class="number">-->
-<!--                                {{ cart_product_form }}-->
-<!--                                {% csrf_token %}-->
-<!--                                <button type="submit" value="В корзину" class="btn btn-warning">Добавить в корзину</button>-->
-<!--                            </form>-->
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'cart:cart_add' article.id %}" class="btn btn-warning">Добавить в корзину</a>
+                            {% else %}
+                                <p>Зарегистрируйтесь, чтобы добавить товар</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

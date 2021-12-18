@@ -5,7 +5,8 @@
     <div class="container bucket">
         <h1>Корзина покупок {% if not cart.products.count %}пуста{% endif %}</h1>
         {% if cart.products.count %}
-        <table class="table align-middle table-secondary">
+		<div class="table-responsive">
+        <table class="table align-middle table-secondary table-sm cart">
             <thead>
                 <tr>
                     <th>Картинка</th>
@@ -55,6 +56,7 @@
                 <td style="font-weight: bold; font-size: 18px;">{{ cart.final_price }}</td>
             </tr>
         </table>
+		</div>
         <p class="text-right">
             <a href="{% url 'products:catalog_home' %}" class="btn btn-info">В магазин</a>
             <a href="{% url 'checkout' %}" class="btn btn-info">Оформить заказ</a>

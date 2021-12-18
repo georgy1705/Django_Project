@@ -94,6 +94,7 @@ body {
 
 .header .show-topmenu {
     display: block;
+    z-index: 1000;
     position: absolute;
     top: 70px;
     right: 0;
@@ -114,30 +115,6 @@ button::-moz-focus-inner {
 }
 
 .topmenu li a:hover { color: #008080; }
-
-.submenu {
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.5s ease-in;
-    position: absolute;
-    background-color: #4C514A;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.submenu li {
-        display: block;
-        text-align: center;
-        border-bottom: 1px solid green;
-        margin-right: 0;
-        padding: 15px 15px;
-}
-
-.submenu li a {
-    font-size: 14px;
-}
 
 .submenu-link:after {
   margin-left: 10px;
@@ -192,19 +169,20 @@ main .sneakers {
     border: 2px solid grey;
 }
 
-main .features p {
-    display: inline-block;
-    font-weight: bold;
-    margin-left: 3px;
-}
 .single-item {
     border: 4px solid grey;
     width: 70%;
     margin-left: 16vh;
 }
+
 .card {
     margin-right: 10px;
     margin-bottom: 15px;
+}
+
+.item {
+    width: 280px;
+    height: 400px
 }
 
 #hthing {
@@ -214,18 +192,22 @@ main .features p {
     font-weight: 650;
     width: 60%;
 }
+
 .align-top {
     float: right;
     font-weight: 500;
     margin-bottom: 11px;
 }
+
 .bthing {
     float: right;
     margin-top: 10px;
 }
+
 .breadcrumb a {
     color: black;
 }
+
 .breadcrumb a:hover {
     text-decoration: none;
     color: black;
@@ -234,7 +216,7 @@ main .features p {
     background: #A9A9A9;
 }
 
-.breadcrumps {
+.breadcrumbs {
     width: 100%;
 }
 
@@ -252,11 +234,6 @@ main .features p {
     font-weight: 500;
     vertical-align: bottom;
     text-align: center;
-}
-
-main .features h6 {
-    font-weight: bold;
-    margin-top: 50px;
 }
 
 #acoldetail {
@@ -304,14 +281,17 @@ main .features h6 {
     border-bottom: 0.3px solid #DCDCDC;
     cursor: pointer;
 }
+
 .descElem {
     display: block;
     padding: 20px 10px;
 }
+
 .descElem.active {
     display: none;
     overflow: initial;
 }
+
 .headingElem:after {
   content: 'ˇ';
   color: #A9A9A9;
@@ -340,6 +320,17 @@ main .features h6 {
 
 .order h2 {
     text-align: center;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.features p {
+    font-size: 20px;
 }
 
 .bucket {
@@ -375,13 +366,30 @@ main .features h6 {
     justify-content: center !important;
 }
 
+
 @media screen and (min-width: 1921px) {
     .container {
         width: 1300px;
     }
+
+    .item {
+        width: 230px;
+        height: 350px;
+    }
+
+    .colItems {
+        display: flex;
+        flex-wrap: nowrap
+    }
+
+    .items {
+        flex-wrap: nowrap !important
+    }
+
     .topmenu-open {
         display: none;
     }
+
     .nav {
         height: 10vh;
     }
@@ -390,6 +398,20 @@ main .features h6 {
 @media screen and (max-width: 1920px) {
     .container {
         width: 1700px;
+    }
+
+    .item {
+        width: 300px;
+        height: 400px;
+    }
+
+    .colItems {
+        display: flex;
+        flex-wrap: nowrap
+    }
+
+    .items {
+        flex-wrap: nowrap !important
     }
 
     .nav {
@@ -404,6 +426,10 @@ main .features h6 {
     .container {
         width: 1500px;
     }
+
+    .sidebar {
+        width: 15vh
+    }
 }
 
 @media screen and (max-width: 1440px) {
@@ -416,18 +442,76 @@ main .features h6 {
     .container {
         width: 1140px;
     }
+
+    .sidebar {
+        width: 10vh
+    }
 }
 
 @media screen and (max-width: 1199px) {
     .container {
         width: 960px;
     }
+
+    .logoimg {
+        width: 100px;
+        height: 78px;
+    }
+
     .logoimg {
         width: 100px;
         height: 73px;
     }
+
     .nav {
         height: 10vh;
+    }
+
+    .bucket h1 {
+        margin-left: 10vh
+    }
+
+    .cart {
+        margin-left: 10vh
+    }
+
+    .logoimg {
+        width: 90px;
+        height: 50px;
+    }
+
+    .sidebar a {
+        font-size: 14px
+    }
+
+    .sidebar a i {
+    font-size: 20px;
+    }
+
+    .filters {
+        margin-left: 10vh;
+    }
+
+    .item {
+        width: 230px;
+        height: 350px;
+    }
+
+    .colItems {
+        display: flex;
+        flex-wrap: nowrap
+    }
+
+    .items {
+        flex-wrap: nowrap !important
+    }
+
+    .breadcrumbs, .register h3, #pregister, .pregisterBtn {
+        margin-left: 10vh;
+    }
+
+    .register form {
+        margin-left: 10vh;
     }
 }
 
@@ -435,6 +519,12 @@ main .features h6 {
     .container {
         width: 720px;
     }
+
+    .logoimg {
+        width: 85px;
+        height: 54px;
+    }
+
     .topmenu {
         display: none;
         max-height: 0;
@@ -453,8 +543,18 @@ main .features h6 {
         border: none;
     }
 
+
+    .register h3 {
+        margin-top: 30px
+    }
+
+    .pregisterBtn {
+        margin-bottom: 30px
+    }
+
+
     .topmenu li {
-       display: block;
+        display: block;
         text-align: center;
         border-bottom: 1px solid #2E8B57;
         margin-right: 0;
@@ -478,8 +578,20 @@ main .features h6 {
     }
 
     .logoimg {
-        width: 100px;
-        height: 70px;
+        width: 92px;
+        height: 55px;
+    }
+
+    .filters {
+        margin-left: 10vh;
+    }
+
+    .sidebar a {
+        font-size: 14px
+    }
+
+    .sidebar a i {
+    font-size: 20px;
     }
 }
 
@@ -487,9 +599,25 @@ main .features h6 {
     .container {
         width: 540px;
     }
-    .search {
-        display: none;
+
+    .breadcrumbs, .register h3, #pregister, .pregisterBtn {
+        margin-left: 10vh;
     }
+
+    .item {
+        width: 250px;
+        height: 350px
+    }
+
+    .logoimg {
+        width: 90px;
+        height: 50px;
+    }
+
+    .headingElem {
+        font-size: 11px
+    }
+
 }
 
 @media screen and (max-width: 575px) {
@@ -498,8 +626,58 @@ main .features h6 {
         padding: 0 15px;
     }
 
+    .bucket h1 {
+        margin-left: 10vh
+    }
+
+    .filters_set {
+        display: none
+    }
+
+    .search {
+        display: none
+    }
+
+    .filters {
+        display: none;
+        border: none;
+        background: none
+    }
+
+    .colItems {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item {
+        width: 230px;
+        height: 350px;
+        margin-left: 10vh
+    }
+
+    .logoimg {
+        width: 90px;
+        height: 60px;
+    }
+
     .topmenu-open {
-    margin-left: auto;
+        margin-left: auto;
+    }
+
+    .sidebar {
+        z-index: 1;
+    }
+
+    .sidebar a {
+        font-size: 12px
+    }
+
+    .sidebar a i {
+    font-size: 20px;
+    }
+
+    .cart {
+        margin-left: 10vh
     }
 
 }

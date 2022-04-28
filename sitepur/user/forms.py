@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from phonenumber_field.formfields import PhoneNumberField
 from user.models import User, Order
+from datetime import date, timedelta
+
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -17,12 +19,12 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 class OrderForm(forms.ModelForm):
-    phone = PhoneNumberField(label='Телефон', error_messages={'unique': 'Please enter your name'}, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone = PhoneNumberField(label='Телефон',  error_messages={'unique': 'Please enter your phone'}, widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
     first_name = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(label='Фамилия', widget=forms.TextInput(attrs={'class': 'form-control'}))
     address = forms.CharField(label='Адрес', widget=forms.TextInput(attrs={'class': 'form-control'}))
     comment = forms.CharField(label='Комментарий к заказу', required=False, widget=forms.Textarea(attrs={'class': 'form-control'}))
-    order_date = forms.DateField(label='Дата получения заказа', widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'date'}))
+    order_date = forms.DateField(label='Дата получения заказа', widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'date', 'value': date.today()+timedelta(days=3), 'readonly':'readonly'}))
     class Meta:
         model = Order
         fields = (

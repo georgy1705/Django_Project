@@ -52,6 +52,11 @@
         <hr>
         <div class="order">
             <h2>Форма заказа</h2>
+            <div class="map">
+                <h5>Наш магазин:</h5>
+                <div id="map" style="width:50%; height:400px"></div>
+            </div>
+
             <form action="{% url 'make-order' %}" method="POST" class="order">
                 {% csrf_token %}
                 {{ form.as_p  }}

@@ -9,6 +9,10 @@ class ArticlesImageAdmin(admin.StackedInline):
 class SizeAdmin(admin.StackedInline):
     model = Size
 
+@admin.register(Reviews)
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = ('author', 'create_date')
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug')

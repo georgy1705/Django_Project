@@ -3,10 +3,25 @@
 {% block title %}Про нас{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Контактная информация</h1>
-        <p>Адрес: Пушкина</p>
-        <p>Телефон: +749564654</p>
-        <p>Email: test@mail.ru</p>
+        <nav aria-label="breadcrumb" class="breadcrumps" id="crumps">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Связаться с нами</li>
+          </ol>
+        </nav>
+    <div class="container border border-info p-5">
+        <h1 class="text-center">Контактная информация</h1>
+        <div>
+            <ul>
+                <li class="contact-phone"><a href="tel:+7 (495) 544-57-70">+7 (495) 544-57-70</a></li>
+                <li class="contact-phone"><a href="tel:+7 (800) 775-28-34">+7 (800) 775-28-34</a></li>
+            </ul>
+            <p class="text-center text-secondary">Ежедневно с 9:00 до 22:00 по Московскому времени</p>
+        </div>
+
+        <div class="text-center contact-email">
+            Интересующие вас вопросы Вы можете написать нам на почту
+            <p class="contact-phone"><a href="mailto:store@brandshop.ru">store@brandshop.ru</a></p>
+        </div>
     </div>
 {% endblock %}

@@ -16,12 +16,30 @@
             <div class="row items">
                 <div class="col-3 justify-content-center filters">
                     <div class="filters_set">
-                        {% if request.path == '/catalog/filter/' or request.path == '/catalog/' or request.path == '/catalog/search/' %}
+                        {% if request.path == '/catalog/filter/' or request.path == '/catalog/' or request.path == '/catalog/search/' or request.path == '/catalog/sort/' %}
                         <form action="{% url 'products:filter1' %}" method="get">
                         {% else %}
                         <form action="/catalog/{{ category.slug }}/filter/" method="get">
                         {% endif %}
                             <div class="accordeonWrapper type_1">
+                                <div class="elemAccordeon">
+                                    <div class="descElem">
+                                        <select class="select_send_ajax sort-select" name="sort">
+                                        <optgroup label="По популярности">
+                                            <option>Более популярные</option>
+                                       </optgroup>
+                                       <optgroup label="По цене">
+                                                <option value="max">По убыванию</option>
+                                                <option value="min">По возрастанию</option>
+                                       </optgroup>
+                                       <optgroup label="По новизне">
+                                                <option value="new">Сначала новые</option>
+                                                <option value="latest">Сначала старые</option>
+                                       </optgroup>
+                                    </select>
+                                    </div>
+                                </div>
+
                                 <div class="elemAccordeon">
                                     <div class="headingElem">ПОЛ</div>
                                     <div class="descElem">

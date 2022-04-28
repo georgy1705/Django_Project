@@ -9,6 +9,7 @@ from .models import User, Customer
 from catalog.mixins import CartMixin
 
 
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -61,7 +62,7 @@ class CheckoutView(CartMixin, View):
 
 class MakeOrderView(CartMixin, View):
 
-    @transaction.atomic
+
     def post(self, request, *args, **kwargs):
         form = OrderForm(request.POST or None)
         customer = Customer.objects.get(user=request.user)
@@ -88,17 +89,7 @@ class MakeOrderView(CartMixin, View):
             return render(request, 'user/checkout.html', context={'form': form, 'cart': self.cart,})
 
 
+# else:
+        #     messages.error(request, 'Ошибка регистрации')
 
-# class ProfileView(CartMixin, View):
-#
-#     def get(self, request, *args, **kwargs):
-#         user = User.objects.get(user=request.user)
-#         # orders = Order.objects.filter(user=user).order_by('-created_at')
-#         # categories = Category.objects.all()
-#
-#         return render(
-#             request,
-#             'profile.html',
-#             {'cart': self.cart}
-#         )
 

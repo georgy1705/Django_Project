@@ -1,21 +1,18 @@
 {% load static %}
 <!doctype html>
-<html lang="ru">
+<html lang="ru"> <!--установка языка текста на странице-->
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> <!--установка кодировки на странице-->
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title> <!--заголовок страницы-->
+</head>
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" type="text/css" href="{% static 'main/slick/slick.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'main/slick/slick-theme.css' %}"/>
     <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
-    <script defer src="{% static 'main/js/jquery-3.5.1.min.js' %}"></script>
-    <script defer src="{% static 'main/slick/slick.min.js' %}"></script>
-    <script defer type="text/javascript" src="{% static 'main/js/script.js' %}"></script>
-    <script defer src="{% static 'main/js/bootstrap.min.js' %}"></script>
 </head>
 <body>
     <header class="header">
@@ -82,5 +79,58 @@
         {% block content %}
         {% endblock %}
     </main>
+    <footer class="footer" id="section-footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__content-logo">
+                    <div class="header__logo-small"></div>
+                    <div class="header__logo-big"></div>
+                    <h3 class="text-center">Интернет-магазин <br> брендовых товаров</h3>
+                </div>
+
+                <div class="footer__content-adress">
+                    <ul>
+                        <li>Warehouse Society, 234</li>
+                        <li>Bahagia Ave Street PRBW 29281</li>
+                    </ul>
+                </div>
+
+                <div class="footer__content-mail">
+                    <ul>
+                        <li><a href="mailto:info@warehouse.project">info@warehouse.project</a></li>
+                        <li><a href="tel:1-232-3434">1-232-3434 (Main)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__content-rights">
+                    <ul>
+                        <li>© Интернет-магазин брендовых товаров™, 2022. All rights reserved.</li>
+                        <li>Регистрационный номер компании: 21479524.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__links">
+                <h3>Социальные сети</h3>
+                <div class="footer__links-media">
+                    <div class="footer__link">
+                        <img src="{% static 'main/img/inst.svg' %}" alt="instagram" class="footer__link-img">
+                    </div>
+                    <div class="footer__link">
+                        <img src="{% static 'main/img/twitter.svg' %}" alt="twitter" class="footer__link-img">
+                    </div>
+                    <div class="footer__link">
+                        <img src="{% static 'main/img/facebook.svg' %}" alt="facebook" class="footer__link-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <script type="text/javascript" src="{% static 'main/js/main.js' %}"></script>
+    <script src="{% static 'main/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'main/slick/slick.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/script.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

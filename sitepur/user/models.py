@@ -9,9 +9,10 @@ from django.utils import timezone
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique = True)
-    phone = PhoneNumberField('Телефон', unique=True, error_messages={
-            'unique': "Пользователь с таким телефоном уже существует.",
-        },)
+    phone = PhoneNumberField('Телефон')
+    # error_messages = {
+    #                      'unique': "Пользователь с таким телефоном уже существует.",
+    #                  },
     first_name = models.CharField('Имя', max_length=30, blank=True)
     last_name = models.CharField('Фамилия', max_length=30, blank=True)
     username = models.CharField('Admin_name', max_length=15,
@@ -90,7 +91,7 @@ class Order(models.Model):
     STATUS_CHOICES = (
         (STATUS_NEW, 'Новый заказ'),
         (STATUS_IN_PROGRESS, 'Заказ в обработке'),
-        (STATUS_READY, 'Зааказ готов'),
+        (STATUS_READY, 'Заказ готов'),
         (STATUS_COMPLETED, 'Заказ выполнен')
     )
 

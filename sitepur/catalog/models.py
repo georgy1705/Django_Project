@@ -12,7 +12,7 @@ User = get_user_model()
 
 class Category(models.Model):
     name = models.CharField("Категория", unique=True, max_length = 50, db_index=True)
-    slug = models.SlugField(max_length = 50, unique=True)
+    slug = models.SlugField(max_length=50, unique=True)
 
     class Meta:
         ordering = ('name',)
@@ -26,7 +26,7 @@ class Category(models.Model):
         return reverse('catalog:catalog_home_by_category', args=[self.slug])
 
 class Gender(models.Model):
-    name = models.CharField("Пол", max_length = 20, db_index=True)
+    name = models.CharField("Пол", max_length=20, db_index=True)
 
     def __str__(self):
         return self.name
@@ -37,7 +37,7 @@ class Gender(models.Model):
 
 
 class Subcategory(models.Model):
-    name = models.CharField("Подкатегория", max_length = 20, db_index=True)
+    name = models.CharField("Подкатегория", max_length=20, db_index=True)
 
     def __str__(self):
         return self.name
@@ -47,7 +47,7 @@ class Subcategory(models.Model):
         verbose_name_plural = 'Подкатегории'
 
 class Brand(models.Model):
-    name = models.CharField("Бренд", max_length = 20, db_index=True)
+    name = models.CharField("Бренд", max_length=20, db_index=True)
 
     def __str__(self):
         return self.name
@@ -138,3 +138,11 @@ class Size(models.Model):
     class Meta:
         verbose_name = 'Размер модели'
         verbose_name_plural = 'Размеры моделей'
+
+class Reviews(models.Model):
+    article = models.ForeignKey(Articles, on_delete=models.CASCADE, verbose_name='Отзыв', blank = True, null = True, related_name='comments_articles')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор отзыва', blank=True, null=True)
+    create_date = models.DateTimeField(auto_now=True, verbose_name='Дата создания')
+    text = models.TextField(verbose_name='Текст отзыва')
+    img_detail = models.ImageField('Фотография модели', upload_to='reviews_img')
+

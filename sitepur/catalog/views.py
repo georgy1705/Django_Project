@@ -126,3 +126,7 @@ class Search(CartMixin, View):
                       {'catalog': catalog, 'genders': gen, 'subcategory': subcategory, 'brand': brand, 'cart': self.cart})
 
 
+def Sizes(request):
+    return render(request, 'catalog/sizes.html')
+
+

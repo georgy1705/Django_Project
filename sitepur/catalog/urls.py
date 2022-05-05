@@ -6,6 +6,7 @@ app_name = 'catalog'
 
 urlpatterns = [
     path('', views.CatalogHome.as_view(), name='catalog_home'),
+    path('sizes/', views.Sizes, name='sizes'),
     path("filter/", views.FilterCatalogView, name="filter1"),
     path("<slug:category_slug>/filter/", views.FilterCatalogView, name="filter"),
     path("search/", views.Search.as_view(), name="search"),
